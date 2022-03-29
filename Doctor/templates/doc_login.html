@@ -1,0 +1,19 @@
+{% load static %}
+<html>
+<head>
+<link rel="stylesheet" href='{%static "doc_logincss/dlogin.css" %}'
+</head>
+<form method="POST" action="{% url 'doc_login' %}" class="form" id="doclogin">
+<div class="login">
+  <div class="login-triangle"></div>
+  {% csrf_token %}
+  <h2 class="login-header">Doctor login</h2>
+  <p style="color:red;">{{msg}}</p>
+
+  <form class="login-container">
+    <p><input type="email" placeholder="Email" name="docemail"></p>
+	<p><input type="password" placeholder="Password" name="docpassword"></p>
+    <p><input type="submit" value="Login"></p>
+  </form>
+</div>
+</html>

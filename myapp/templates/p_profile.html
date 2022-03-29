@@ -1,0 +1,69 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Account Details <p style="color:red" ;>{{msg}}</p></div>
+                <div class="card-body">
+                    <form action="{% url 'p_profile' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- Form Group (username)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="uname">Username (how your name will appear to other users on the site)</label>
+                            <input class="form-control" name="uname" id="uname" type="text" placeholder="Enter your username" value="{{uid.uname}}">
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="fname">First name</label>
+                                <input class="form-control" name="fname" id="fname" type="text" placeholder="Enter your first name" value="{{uid.fname}}">
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="lname">Last name</label>
+                                <input class="form-control" name="lname" id="lname" type="text" placeholder="Enter your last name" value="{{uid.lname}}">
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="">Email Address</label>
+                                <input class="form-control" name="email" id="email" type="email" placeholder="Enter your email address" value="{{uid.email}}" readonly>
+                            </div>
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="age">Age</label>
+                                <input class="form-control" name="age" id="age" type="text" placeholder="Enter your age" value="{{uid.age}}">
+                            </div>
+                        </div>
+                        <!-- Form Group (email address)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="address">Address</label>
+                            <input class="form-control" name="address" id="address" type="text" placeholder="Enter your address" value="{{uid.address}}">
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (phone number)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="mobile">Phone number</label>
+                                <input class="form-control" name="mobile" id="mobile" type="tel" placeholder="Enter your phone number" value="{{uid.mobile}}">
+                            </div>
+                            <!-- Form Group (birthday)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="pic">Profile Pic</label>
+                                <input class="form-control" id="pic" type="file" name="pic" placeholder="upload your pic" value="">
+                            </div>
+                        </div>
+                        <!-- Save changes button-->
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

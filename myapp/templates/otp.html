@@ -1,0 +1,37 @@
+{%load static%}
+<html>
+<head>
+  <title>OTP</title>
+  <link rel="stylesheet" href="{%static 'otp_css/patient.css' %}">
+</head>
+<body>
+  <div class="container" id="container">
+    
+    <!-- sign in page -->
+    <div class="form-container sign-in-container">
+     
+      <form method="POST" action="{% url 'otp' %}" class="form" id="login">
+        <p>{{msg}}</p>
+        {% csrf_token %}
+        <h1 class="form__title">VERIFY OTP</h1>
+        <div class="form__input-group">
+          <label for="otp">ENTER OTP: </label>
+          <input type="text" class="form__input" name="uotp" id="uotp"  placeholder ="OTP" maxlength="20" required> 
+        </div>
+        <input type="hidden" name="otp" value="{{otp}}" id=" ">
+        <div class="form__input-group">
+          
+        <div class="form__input-group">
+          <button type="submit" class="form__button">Verify Otp</button>
+          <a class>
+        </div>
+     </form>
+    </div>
+    
+  		</div>
+		</div>
+	</div>
+ </div>
+  <script src="{%static 'otp_js/patient.js' %}"></script> 
+</body>
+</html>

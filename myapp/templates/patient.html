@@ -1,0 +1,79 @@
+{% load static %}
+<html>
+<head>
+  <title>Login/Sign Up Form</title>
+  <link rel="stylesheet" href="{%static 'patient_css/patient.css' %}">
+ 
+
+</head>
+<body>
+	
+  <div class="container" id="container">
+    <!-- sign in page -->
+
+    <div class="form-container sign-in-container">
+       <form method="POST" action="{% url 'login' %}" class="form" id="login">
+        {% csrf_token %}
+        <h1 class="form__title">Login</h1>
+        <p>{{msg}}</p>
+        <div class="form__input-group">
+          <label for="email">Email: </label>
+          <input type="email" class="form__input" name="email" id="email" maxlength="30" required> 
+        </div>
+        <div class="form__input-group">
+          <label for="password">Password: </label>
+          <input type="password" class="form__input" name="password" id="password" maxlength="25" required> 
+        </div>
+        <div class="form__input-group">
+          <button type="submit" class="form__button">Submit</button>
+        </div><br>
+        <a class="small" href='{% url "pforgot_password" %}'>Forgot Password?</a>
+     </form>
+    </div>
+    
+   <!--  create account page -->
+   <div class="form-container sign-up-container">
+     <form method="POST" action="{% url 'register' %}" class="form" id="register">
+		{% csrf_token %}
+       <h1 class="form__title">Register</h1>
+	   
+       <div class="form__input-group">
+         <label for="uname"> Username: </label>
+         <input type="text" class="form__input" name="uname" id="uname" maxlength="20" required>
+       </div>
+	   <div class="form__input-group">
+		<label for="email">Email: </label>
+		<input type="Email" class="form__input" name="email" id="email" maxlength="30" required> 
+	  </div>
+        <div class="form__input-group">
+          <label for="password">Password: </label>
+          <input type="password" class="form__input" name="password" id="password" maxlength="20" required> 
+        </div>
+		<div class="form__input-group">
+			<label for="cpassword">comfirm Password: </label>
+			<input type="password" class="form__input" name="cpassword" id="cpassword" maxlength="20" required> 
+		  </div>
+		
+       <button class="form__button" type="submit">Submit</button>
+     </form>
+   </div> 
+    
+   <div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>Please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+ </div>
+  <script src="{%static 'patientjs/patient.js' %}"></script>
+</body>
+
+</html>
