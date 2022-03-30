@@ -10,8 +10,8 @@ from tempfile import tempdir
 from Doctor.models import Doctors
 
 # Create your views here.
-def home(request):
-    return render(request,'index.html')
+# def home(request):
+#     return render(request,'index.html')
 
 def index(request):
     return render(request,'index.html')
@@ -103,7 +103,7 @@ def pchange_password(request):
                 return render(request,'pchange-password.html',{'msg':'Password Changed Successfully','uid':uid})
             return render(request,'pchange-password.html',{'msg':'New passwords are not same','uid':uid})
         return render(request,'pchange-password.html',{'msg':'Old password is incorrect','uid':uid})
-    return render(request,'pchange-password.html')
+    return render(request,'pchange-password.html',{'uid':uid})
 
 
           
@@ -157,7 +157,7 @@ def appointment(request):
             return render(request,'appointment.html',{'uid':uid,'docs':docs,})
             
     except:
-        return render(request,'appointment.html')
+        return render(request,'appointment.html',{'uid':uid})
    
 
     

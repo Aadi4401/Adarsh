@@ -12,10 +12,10 @@ def doc_login(request):
             doc=Doctors.objects.get(docemail=request.POST['docemail'])
             if request.POST['docemail']==doc.docemail:
                 if request.POST['docpassword']==doc.docpassword:
-                    return render(request,'header2.html',{'msg':'login successfully'})
-                return render(request,'doc_login.html',{'msg':'invalid password'})                        
+                    return render(request,'header2.html',{'msg':'login successfully','doc':doc})
+                return render(request,'doc_login.html',{'msg':'invalid password','doc':doc})                        
         except:
 
-             return render(request,'doc_login.html',{'msg':'invalid email'})
+             return render(request,'doc_login.html',{'msg':'invalid email','doc':doc})
 
     return render(request,'doc_login.html')
