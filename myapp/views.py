@@ -1,5 +1,5 @@
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 
 from .models import *
@@ -14,8 +14,13 @@ from Doctor.models import Doctors
 #     return render(request,'index.html')
 
 def index(request):
-    return render(request,'index.html')
-    
+    doctor = Doctors.objects.all()
+    return render(request,'index.html',{'doctor':doctor})
+
+def getspe(request):
+    data = list(Doctors.objects.filter(specialization=request.GET['value']).values())
+    return JsonResponse({'data':data})
+
 def Admin(request):
     return render(request,'admin.html')
 
@@ -149,15 +154,18 @@ def my_profile(request):
     return render(request,{'uid'.uid})
 
 def appointment(request):
-    try:
-        uid=User.objects.get(email=request.session['email'])
-        if request.method == "GET":
-            docs=Doctors.objects.all
-            specs = Doctors.objects.filter(docs.specialization)
-            return render(request,'appointment.html',{'uid':uid,'docs':docs,})
-            
-    except:
-        return render(request,'appointment.html',{'uid':uid})
-   
+    uid=User.objects.get(email=request.session['email'])
+    # appoint=Appointment.objects.get(email=request.session['email'])
+    doctor = Doctors.objects.all()
+    if request.method=='POST':
+        Appointment.objects.create(
+        specialization=request.POST['specialization'],
+        doctorname=request.POST['doctorname'],
+        fees=request.POST['fees'],
+        date=request.POST['date'],
+        time=request.POST['time'],
+        )
+        return render(request,'appointment.html',{'msg':'Booked!!','uid':uid, 'doctor':doctor})
+    return render(request,'appointment.html',{'uid':uid,'doctor':doctor})
 
     

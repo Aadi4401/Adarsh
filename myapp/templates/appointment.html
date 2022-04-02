@@ -43,20 +43,10 @@
                         </label>
 
                         <div class="col-sm-8 col-lg-8">
-                            <select name="specialization" class="form-control" onchange="getdoctor(this.value);"
+                            <select name="specialization" class="form-control" onchange="getspe(this.value);"
                                 required="required">
-                                <option value="">
-                                    Select Specialization </option>
-                                {% for doc in docs %}
-                                <option value="{{doc.docemail}}">
-                                    {{doc.specialization}} :
-                                    {% for i in specs %}
-                                    <option value="{{doc.docemail}}">
-                                        {{doc.docname}} </option>
-                                    {% endfor%}
-
-                                
-                                </option>
+                                {% for one in doctor %}
+                                <option value="{{one.specialization}}">{{one.specialization}}</option>
                                 {% endfor %}
                                
                             </select>
@@ -69,12 +59,11 @@
                         </label>
 
                         <div class="col-sm-8 col-lg-8">
-                            <select name="docname" class="form-control" onchange="getdoctor(this.value);"
+                            <select name="docname" class="form-control" id="doc"
                                 required="required">
                                 
                                 <option value="">Select Name</option>
-                                <option value="Gynecologist/Obstetrician">
-                                    Gynecologist/Obstetrician </option>
+                                
                                 
 
                             </select>
@@ -127,6 +116,28 @@
         </div>
     </div>
     <script src='{% static "appointment_js/appoint.js" %}'></script>
+    <script>
+        function getspe(value){
+            data = {
+                'value':value 
+            }
+            $.ajax({
+                url : "{% url 'getspe' %}",
+                method : 'GET',
+                data : data,
 
-</html>
+                success : function(response){
+                    console.log(response.data)
+                    data1 = response.data
+                    let s = ''
+                    for(i=0;i < data1.length; i++){
+                        s += '<option value="'+ String(data1[i].docname)+'">'+ String(data1[i].docname) +'</option>'
+                        // console.log('hello')
+                    }
+                    $('#doc').html(s)
+                }
+                 
+            })
+        }
+    </script>
 {% endblock %}

@@ -1,6 +1,7 @@
+from contextlib import nullcontext
 from re import M
 from django.db import models
-from django.forms import CharField, DateField, IntegerField
+from django.forms import CharField, DateField, IntegerField, TimeField
 
 
 
@@ -25,11 +26,12 @@ def __str__(self):
     return self.email
 
 class Appointment(models.Model):
+    
     specialization=CharField(max_length=30)
     doctorname=CharField(max_length=35)
     fees=IntegerField(min_value=500)
-    date=CharField(max_length=25)
-    time=CharField(max_length=25)
+    date=DateField(required=True)
+    time=TimeField(required=True)
 
 
 

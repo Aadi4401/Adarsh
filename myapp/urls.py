@@ -14,6 +14,7 @@ urlpatterns = [
     path('Admin/',views.Admin,name="Admin"),
     path('register/',views.register,name="register"),
     path('otp/',views.otp,name="otp"),
+    path('getspe/',views.getspe,name="getspe"),
     path('login/',views.login,name="login"),
     path('logout/',views.logout,name="logout"),
     path('pdash/',views.pdash,name="pdash"),
