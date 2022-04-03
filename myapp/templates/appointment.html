@@ -21,7 +21,8 @@
 <body>
 
     <div class="container text-center position-relative">
-        <h1>24/7 Care is available</h1>
+       
+        <h1>24/7 Care is available<p style="color:red" ;>{{msg}}</p></h1>
         <h2>Life Care</h2>
 
     </div>
@@ -38,7 +39,7 @@
                    
                     <!---->
                     <div class="form-group row">
-                        <label class="col-sm-4 col-lg-4" for="DoctorSpecialization">
+                        <label class="col-sm-4 col-lg-4" for="DoctorSpecialization" aria-placeholder="select specialization">
                             Doctor Specialization
                         </label>
 
@@ -77,7 +78,7 @@
                             Date
                         </label>
                         <div class="col-sm-8 col-lg-8">
-                            <input type="date" id="date" class="form-control">
+                            <input type="date" id="date" name="date" class="form-control">
                         </div>
                     </div>
                     <!---->
@@ -86,7 +87,7 @@
                             Time
                         </label>
                         <div class="col-sm-8 col-lg-8">
-                            <input type="time" id="time" class="form-control">
+                            <input type="time" name="time" id="time" class="form-control">
                         </div>
                     </div>
                     <!---->
@@ -95,7 +96,7 @@
                             Fees
                         </label>
                         <div class="col-sm-8 col-lg-8">
-                            <input type="number" id="time" class="form-control">   
+                            <input type="number" name="fees" id="fees" class="form-control">   
                         </div>
                     </div>
                     <!---->

@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import FileField
 
 # Create your models here.
 class Doctors(models.Model):
@@ -8,6 +9,7 @@ class Doctors(models.Model):
     docmobile=models.CharField(max_length=30)
     docemail=models.EmailField(unique=True)
     docpassword=models.CharField(max_length=30)
+    doc_pic=models.FileField(upload_to='profile',default='doc.png')
 
 def __str__(self):
     return self.docemail

@@ -1,10 +1,5 @@
-from contextlib import nullcontext
-from re import M
+from email.policy import default
 from django.db import models
-from django.forms import CharField, DateField, IntegerField, TimeField
-
-
-
 
 
 # Create your models here.
@@ -26,12 +21,18 @@ def __str__(self):
     return self.email
 
 class Appointment(models.Model):
-    
-    specialization=CharField(max_length=30)
-    doctorname=CharField(max_length=35)
-    fees=IntegerField(min_value=500)
-    date=DateField(required=True)
-    time=TimeField(required=True)
+
+    specialization=models.CharField(null=True,blank=True,max_length=50)
+    doctorname=models.CharField(null=True,blank=True,max_length=50)
+    fees=models.IntegerField(null=True,blank=True)
+    date=models.DateField(null=True,blank=True)
+    time=models.TimeField(null=True,blank=True)
+    patient = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
 
 
-
+class Contact(models.Model):
+    name=models.CharField(max_length=35)
+    email=models.EmailField(unique=True)
+    phone=models.CharField(max_length=14)
+    subject=models.CharField(max_length=50)
+    message=models.TextField()

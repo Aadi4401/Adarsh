@@ -16,20 +16,22 @@ table, th, td {
 <table style="width: 90%">
   <tr>
       <td><b>Doctor Specialization</b></td>
-      <td><b>Doctor name</b></td>
+      <td><b>Patient name</b></td>
     <td><b>Date</b></td>
     <td><b>Time</b></td>
     <td><b>Fees</b></td>
   </tr>
   
-  <tr>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
+  {% for one in appointments %}
+  
+  <tr >
+    <td> {{ one.specialization}}</td>
+    <td> {{one.patient.email}}</td>
+    <td>{{one.date}} </td>
+    <td> {{one.time}}</td>
+    <td>{{one.fees}} </td>
   </tr>
-
+{% endfor %}
 </table>
 
 <p>appointments</p>

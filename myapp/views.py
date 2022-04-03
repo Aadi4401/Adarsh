@@ -24,6 +24,9 @@ def getspe(request):
 def Admin(request):
     return render(request,'admin.html')
 
+def Admin(request):
+    return render(request,'admin.html')
+
 def otp(request):
     return render(request,'otp.html')
 def dashboard(request):
@@ -155,17 +158,20 @@ def my_profile(request):
 
 def appointment(request):
     uid=User.objects.get(email=request.session['email'])
-    # appoint=Appointment.objects.get(email=request.session['email'])
     doctor = Doctors.objects.all()
     if request.method=='POST':
         Appointment.objects.create(
         specialization=request.POST['specialization'],
-        doctorname=request.POST['doctorname'],
+        doctorname=request.POST['docname'],
         fees=request.POST['fees'],
         date=request.POST['date'],
         time=request.POST['time'],
+        patient = uid
+        
         )
-        return render(request,'appointment.html',{'msg':'Booked!!','uid':uid, 'doctor':doctor})
+        return render(request,'appointment.html',{'msg':'Booked!!','uid':uid, 'doctor':doctor,'msg':'Appointment Booked successfully'})
     return render(request,'appointment.html',{'uid':uid,'doctor':doctor})
 
-    
+def contact(request):
+
+    return render(request,'contact.html')
