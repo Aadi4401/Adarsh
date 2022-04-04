@@ -173,5 +173,16 @@ def appointment(request):
     return render(request,'appointment.html',{'uid':uid,'doctor':doctor})
 
 def contact(request):
-
+    
+    if request.method=='POST':
+        
+        Contact.objects.create(
+            name=request.POST['name'],
+            email=request.POST['email'],
+            phone=request.POST['phone'],
+            subject=request.POST['subject'],
+            message=request.POST['message'],
+        )
+        return render(request,'contact.html',{'msg':'data submitted'})
     return render(request,'contact.html')
+    

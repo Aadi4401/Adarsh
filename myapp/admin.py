@@ -12,4 +12,8 @@ class AdminUser(admin.ModelAdmin):
 @admin.register(Appointment)
 class AdminAppointment(admin.ModelAdmin):
     list_display = ['id','specialization','doctorname','fees','date','time']
+
+@admin.register(Contact)
+class AdminContact(admin.ModelAdmin):
+    list_display = ['id','name','email','phone','subject','message']
  
