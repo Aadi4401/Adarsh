@@ -11,7 +11,7 @@ urlpatterns = [
      
 
 
-    path('Admin/',views.Admin,name="Admin"),
+    # path('Admin/',views.Admin,name="Admin"),
     path('register/',views.register,name="register"),
     path('otp/',views.otp,name="otp"),
     path('getspe/',views.getspe,name="getspe"),
@@ -26,4 +26,11 @@ urlpatterns = [
     path('appointment/',views.appointment,name="appointment"),
     path('contact/',views.contact,name="contact"),
      
+    path('pay/', views.pay, name='pay'),
+	path('paymenthandler/', views.paymenthandler, name='paymenthandler'),
+	path('cancer/', views.cancer, name='cancer'),
+	path('covid/', views.covid, name='covid'),
+	path('organ/', views.organ, name='organ'),
+	path('services/', views.services, name='services'),
+	path('about/', views.about, name='about'),
 ]

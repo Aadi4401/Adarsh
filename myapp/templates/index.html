@@ -32,6 +32,51 @@
 <!-- [if lt IE 9] -->
 </head>
 
+
+
+
+
+<style>
+   .dropbtn {
+     background-color: #157fda;
+     color: white;
+     padding: 16px;
+     font-size: 16px;
+     border: none;
+   }
+   
+   .dropdown {
+     position: relative;
+     display: inline-block;
+   }
+   
+   .dropdown-content {
+     display: none;
+     position: absolute;
+     background-color: #157fda;
+     min-width: 160px;
+     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+     z-index: 1;
+   }
+   
+   .dropdown-content a {
+     color: black;
+     padding: 12px 16px;
+     text-decoration: none;
+     display: block;
+   }
+   
+   .dropdown-content a:hover {background-color: #ddd;}
+   
+   .dropdown:hover .dropdown-content {display: block;}
+   
+   .dropdown:hover .dropbtn {background-color: #39b49a}
+   </style>
+
+
+
+
+
 <body class="clinic_version">
    <!-- LOADER -->
    <div id="preloader">
@@ -72,10 +117,20 @@
                   <ul class="nav navbar-nav">
                      <li><a class="active" href='{% url "index" %}'>Home</a></li>
                      <li><a data-scroll href="{% url 'doc_login' %}">Doctors</a></li>
-                     <li><a data-scroll href='{%url "Admin" %}'>Admin</a></li>
+                     <li>
+                        <div class="dropdown">
+                           <button class="dropbtn">Awareness</button>
+                           <div class="dropdown-content">
+                             <a href="{% url 'cancer' %}">Cancer</a>
+                             <a href="{% url 'covid' %}">Covid</a>
+                             <a href="{% url 'organ' %}">Organ</a>
+                           </div>
+                         </div>
+                        </li>
+                     <!-- <li><a data-scroll href='#'>Awareness</a></li> -->
                      <li><a data-scroll href='{%url "login" %}'>Patient</a></li>
-                     <li><a data-scroll href="#service">Services</a></li>
-                     <li><a data-scroll href="#about">About us</a></li>
+                     <li><a data-scroll href='{%url "services" %}'>Services</a></li>
+                     <li><a data-scroll href='{%url "about" %}'>About us</a></li>
                      <li><a data-scroll href='{%url "contact" %}'>Contact</a></li>
 
                   </ul>
@@ -313,7 +368,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s"
                style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeIn;">
                <div class="widget clearfix">
-                  <img src="{%static 'images/doc2.jpg' %}" alt="" class="img-responsive img-rounded">
+                  <img src="{%static 'images/doc1.jpg' %}" alt="" class="img-responsive img-rounded">
                   <div class="widget-title">
                      <h3>{{one.docname}}</h3>
                      <small>{{one.specialization}}</small>

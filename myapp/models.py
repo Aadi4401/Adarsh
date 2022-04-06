@@ -1,4 +1,3 @@
-from email.policy import default
 from django.db import models
 
 
@@ -15,16 +14,15 @@ class User(models.Model):
     mobile=models.CharField(max_length=15,null=True)
     age=models.CharField(max_length=30,null=True)
     address=models.TextField(null=True,blank=True)
-
     
-def __str__(self):
-    return self.email
+    def __str__(self):
+        return self.email
 
 class Appointment(models.Model):
 
     specialization=models.CharField(null=True,blank=True,max_length=50)
     doctorname=models.CharField(null=True,blank=True,max_length=50)
-    fees=models.IntegerField(null=True,blank=True)
+    fees=models.IntegerField(null=True,blank=True,default=99)
     date=models.DateField(null=True,blank=True)
     time=models.TimeField(null=True,blank=True)
     patient = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
